@@ -11,9 +11,18 @@ function Search ({setShelfBooks})
         setQuery(query.trim());
     }
 
-    const [bookArray, setBookArray] = useState([])
+    const [bookArray, setBookArray] = useState([]);
 
     useEffect(() => {
+
+        function checkIfEmpty()
+        {
+          if(query === "")
+          {
+            setBookArray([]);
+          }
+        }
+
         async function getInputData()
         {
           // searches for books that match the searchterm
@@ -29,7 +38,7 @@ function Search ({setShelfBooks})
                     {
                       if(book.id === shelfBooks[i].id)
                       {
-                        inputData.splice(index, 1, shelfBooks[i])
+                        inputData.splice(index, 1, shelfBooks[i]);
                       }
                     }
                   })
@@ -40,13 +49,10 @@ function Search ({setShelfBooks})
                   setBookArray([]);
                 }
             }
-            else if(query === "")
-            {
-              setBookArray([]);
-            }
+            checkIfEmpty();
         }
-
         getInputData();
+        setTimeout(checkIfEmpty, 1500);
 
     }, [query])
 
