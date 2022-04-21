@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function CreateShelf({books, bookShelf})
 {
     return(
@@ -14,4 +16,8 @@ function CreateShelf({books, bookShelf})
     )
 }
 
+CreateShelf.propTypes = {
+    books: PropTypes.object,
+    bookShelf: PropTypes.string
+}
 export default CreateShelf;
