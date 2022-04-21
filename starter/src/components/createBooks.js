@@ -1,4 +1,5 @@
 import { update, getAll } from '../BooksAPI';
+import PropTypes from "prop-types";
 
 function CreateBooks({bookArray, setShelfBooks})
 {
@@ -29,7 +30,7 @@ function CreateBooks({bookArray, setShelfBooks})
                                         alert(`Successfully changed ${book.title} to ${event.target.value}`);
                                         setShelfBooks(getAll());
                                     }}>
-                                    <option value="none" disabled>
+                                    <option disabled>
                                         Move to...
                                     </option>
                                     <option value="currentlyReading">
@@ -51,6 +52,11 @@ function CreateBooks({bookArray, setShelfBooks})
             )
         })
     )
+}
+
+CreateBooks.propTypes = {
+    bookArray: PropTypes.array,
+    setShelfBooks: PropTypes.func
 }
 
 export default CreateBooks;
